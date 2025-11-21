@@ -1,0 +1,53 @@
+---
+title: "latex"
+format: html
+---
+
+$$
+\frac{\partial L}{\partial w_{1,1}} = \frac{\partial L}{\partial h_1} \cdot \frac{\partial h_1}{\partial z_1} \cdot \frac{\partial z_1}{\partial w_{1,1}} 
+$$
+
+$$
+z_1 = w_{1,1} x_1 + w_{1,2}x_2 + b_1, \text{ } h_1 = \sigma(z_1)
+$$
+
+$$
+w^{*}_{1,1} = w_{1,1} - \alpha \cdot \frac{\partial L}{\partial w_{1,1}}
+$$
+
+BAYESIAN:
+
+$$
+\begin{align*}
+\theta &= (\mu, \sigma^2) \\
+\epsilon &\sim \mathcal{N}(0, 1) \\
+f(\epsilon) &= w = \mu + \sigma \cdot \epsilon \\
+& z = \mu x + \sigma\cdot\epsilon\cdot x
+\end{align*}
+$$
+
+$$
+\begin{aligned}
+\frac{\partial L}{\partial \mu_{1,1}} &= \frac{\partial L}{\partial z_1} \cdot \frac{\partial z_1}{\partial \mu_{1,1}} \\
+&= \frac{\partial L}{\partial z_3} \cdot \frac{\partial z_3}{\partial h_1} \cdot \frac{\partial h_1}{\partial z_1} \cdot \frac{\partial z_1}{\partial \mu_{1,1}} \\
+& \text{where }\frac{\partial z_1}{\partial \mu_{1,1}} = x_1
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\frac{\partial L}{\partial \mu_{1,1}} &= \frac{\partial L}{\partial h_1} \cdot \frac{\partial h_1}{\partial z_1} \cdot \frac{\partial z_1}{\partial \mu_{1,1}} \\
+& \text{where }\frac{\partial z_1}{\partial \mu_{1,1}} = x_1
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\frac{\partial L}{\partial \sigma_{1,1}} &= \frac{\partial L}{\partial h_1} \cdot \frac{\partial h_1}{\partial z_1} \cdot \frac{\partial z_1}{\partial \sigma_{1,1}} \\
+& \text{where } \frac{\partial z_1}{\partial \sigma_{1,1}} = \epsilon \cdot x_1
+\end{aligned}
+$$
+
+$$
+\mathcal{L}_{\text{total}} = \underbrace{\mathbb{E}_{q(w|\theta)}[\log p(y|x, w)]}_{\text{Negative Log-Likelihood}} + \underbrace{\beta \cdot \text{KL}[q(w|\theta) || p(w)]}_{\text{KL Regularization}}
+$$
