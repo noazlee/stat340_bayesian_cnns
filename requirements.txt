@@ -11,3 +11,4 @@ matplotlib
 tensorflow
 opencv-python
 seaborn
+kagglehub
